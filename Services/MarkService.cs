@@ -24,10 +24,11 @@ namespace University.Services
         }
 
         public void UpdateMark(int id, int newValue)
-        {
+        { 
             Mark temp = db.Marks.First(e => e.ID == id);
             temp.Grade = newValue;
             db.SaveChanges();
+            
         }
 
         public void DeleteMark(int id)

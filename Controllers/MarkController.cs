@@ -28,10 +28,10 @@ namespace University.Controllers
             return markService.AddMark(mark);
         }
 
-        [HttpPatch("{id}/{newValue}")]
-        public void Update(int id, int newValue)
+        [HttpPatch("{id}")]
+        public void Update(int id, [FromBody] MarkPatchRequest body)
         {
-            markService.UpdateMark(id, newValue);
+            markService.UpdateMark(id, body.Grade); 
         }
 
         [HttpDelete("delete/{id}")]
