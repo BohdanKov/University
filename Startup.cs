@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using University.DAL;
 using Microsoft.EntityFrameworkCore;
-//using University.Services;
+using University.Services;
 
 namespace University
 {
@@ -28,6 +28,7 @@ namespace University
         {
             services.AddDbContext<UniversityContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("UniversityDatabase")));
+            services.AddTransient<StudentService>();
             services.AddControllersWithViews();
         }
 
