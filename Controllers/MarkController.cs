@@ -24,6 +24,7 @@ namespace University.Controllers
         [HttpPost]
         public Mark AddMark(Mark mark)
         {
+            mark.Date = DateTime.Today;
             return markService.AddMark(mark);
         }
 
