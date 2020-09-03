@@ -26,5 +26,11 @@ namespace University.Controllers
         {
             return markService.AddMark(mark);
         }
+
+        [HttpPatch("{id}/{newValue}")]
+        public void Update(int id, int newValue)
+        {
+            markService.UpdateMark(id, newValue);
+        }
     }
 }

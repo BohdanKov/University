@@ -22,5 +22,15 @@ namespace University.Services
             db.SaveChanges();
             return mark;
         }
+
+        public void UpdateMark(int id, int newValue)
+        {
+            
+            Mark temp = db.Marks.First(e => e.ID == id);
+            temp.Grade = newValue;
+            db.SaveChanges();
+            
+            
+        }
     }
 }
