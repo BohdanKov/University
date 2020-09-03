@@ -11,7 +11,8 @@ using University.DAL;
 
 namespace University.Controllers
 {
-    
+    [ApiController]
+    [Route("api/students")]
     public class StudentController : Controller
     {
         
@@ -21,7 +22,7 @@ namespace University.Controllers
         {
             this.studentService = studentService;
         }
-        [HttpGet("students")]
+        [HttpGet]
         public List<Student> GetStudents()
         {
             Console.WriteLine(studentService.GetStudentsList());
