@@ -32,5 +32,11 @@ namespace University.Controllers
         {
             markService.UpdateMark(id, newValue);
         }
+
+        [HttpDelete("delete/{id}")]
+        public void Delete(int id)
+        {
+            markService.DeleteMark(id);
+        }
     }
 }
