@@ -11,14 +11,20 @@ using University.DAL;
 namespace University.Controllers
 {
     [ApiController]
-    [Route("api/students")]
+    [Route("api/marks")]
     public class MarkController : Controller
     {
-        MarkService markService;
+        private MarkService markService;
 
         public MarkController(MarkService markService)
         {
             this.markService = markService;
+        }
+
+        [HttpPost]
+        public Mark AddMark(Mark mark)
+        {
+            return markService.AddMark(mark);
         }
     }
 }

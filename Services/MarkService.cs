@@ -15,5 +15,12 @@ namespace University.Services
         {
             this.db = db;
         }
+
+        public Mark AddMark(Mark mark)
+        {
+            db.Marks.Add(mark);
+            db.SaveChanges();
+            return mark;
+        }
     }
 }
