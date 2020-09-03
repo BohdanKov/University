@@ -17,7 +17,7 @@ namespace University.Services
 
         public List<Subject> GetSubjectsList()
         {
-            return db.Subjects.ToList();
+            return db.Subjects.ToList();    
         }
     }
 }
