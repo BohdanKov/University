@@ -29,6 +29,8 @@ namespace University
             services.AddDbContext<UniversityContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("UniversityDatabase")));
             services.AddTransient<StudentService>();
+            services.AddTransient<SubjectService>();
+            services.AddTransient<MarkService>();
             services.AddControllersWithViews();
         }
 
