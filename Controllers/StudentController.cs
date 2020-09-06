@@ -15,7 +15,7 @@ namespace University.Controllers
     [Route("api/students")]
     public class StudentController : Controller
     {
-        
+
         private StudentService studentService;
 
         public StudentController(StudentService studentService)
@@ -27,6 +27,12 @@ namespace University.Controllers
         public Student CreateStudent(Student student)
         {
             return studentService.AddStudent(student);
+        }
+
+        [HttpPatch("update/{id}")]
+        public Student UpdateStudent(int id,[FromBody] Student student)
+        {
+            return studentService.ChangesStudent(id, student);
         }
 
         [HttpGet]

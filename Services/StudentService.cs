@@ -23,6 +23,18 @@ namespace University.Services
             return student;
         }
 
+        public Student ChangesStudent(int id, Student student)
+        {
+            Student updatedStudent = db.Students.Find(id);
+            
+            if(student.FirstName != null) { updatedStudent.FirstName = student.FirstName; }
+            if(student.LastName != null) { updatedStudent.LastName = student.LastName; }
+            if(student.Group != null) { updatedStudent.Group = student.Group; }
+            db.SaveChanges();
+           
+            return updatedStudent;
+        }
+
         public void RemoveStudent(int id)
         {
             db.Students.Remove(db.Students.First(r => r.ID == id));
