@@ -21,6 +21,12 @@ namespace University.Controllers
             this.subjectService = subjectService;
         }
 
+        [HttpPost("new")]
+        public Subject AddNewSubjcet(Subject subject)
+        {
+            return subjectService.AddSubject(subject);
+        }
+
         [HttpGet]
         public List<Subject> GetSubjects()
         {

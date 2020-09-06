@@ -19,5 +19,12 @@ namespace University.Services
         {
             return db.Subjects.ToList();    
         }
+
+        public Subject AddSubject(Subject subject)
+        {
+            db.Subjects.Add(subject);
+            db.SaveChanges();
+            return subject;
+        }
     }
 }
