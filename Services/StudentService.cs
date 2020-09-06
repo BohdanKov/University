@@ -16,6 +16,13 @@ namespace University.Services
             this.db = db;
         }
 
+        public Student AddStudent(Student student)
+        {
+            db.Students.Add(student);
+            db.SaveChanges();
+            return student;
+        }
+
         public List<Student> GetStudentsList()
         {
             return db.Students.ToList();

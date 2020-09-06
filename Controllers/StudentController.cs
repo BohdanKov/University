@@ -22,6 +22,12 @@ namespace University.Controllers
         {
             this.studentService = studentService;
         }
+
+        [HttpPost("new")]
+        public Student CreateStudent(Student student)
+        {
+            return studentService.AddStudent(student);
+        }
         [HttpGet]
         public List<Student> GetStudents()
         {
