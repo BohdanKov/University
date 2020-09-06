@@ -23,8 +23,12 @@ namespace University.Services
 
         public List<StudentRating> GetStudentsRatingBySubject(int idSubj)
         {
-            List<Mark> listMarks = db.Marks.Where(m => m.SubjectID == idSubj).ToList();
-            return GetRating(listMarks);
+            return GetRating(db.Marks.Where(m => m.SubjectID == idSubj).ToList());
+        }
+
+        public List<StudentRating> GetStudentsGeneralRating()
+        {
+            return GetRating(db.Marks.ToList());
         }
 
         public List<StudentRating> GetRating(List<Mark> listMarks)

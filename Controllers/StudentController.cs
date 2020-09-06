@@ -25,15 +25,21 @@ namespace University.Controllers
         [HttpGet]
         public List<Student> GetStudents()
         {
-            Console.WriteLine(studentService.GetStudentsList());
             return studentService.GetStudentsList();
         }
 
         [HttpGet("rating/{id}")]
-        public List<StudentRating> GetRating(int id)
+        public List<StudentRating> GetRatingBySubject(int id)
         {
-            Console.WriteLine(studentService.GetStudentsRatingBySubject(id));
             return studentService.GetStudentsRatingBySubject(id);
         }
+
+        [HttpGet("rating")]
+        public List<StudentRating> GetGeneralRating()
+        {
+            return studentService.GetStudentsGeneralRating();
+        }
+
+
     }
 }
