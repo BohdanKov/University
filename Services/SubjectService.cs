@@ -19,5 +19,28 @@ namespace University.Services
         {
             return db.Subjects.ToList();    
         }
+
+        public Subject AddSubject(Subject subject)
+        {
+            db.Subjects.Add(subject);
+            db.SaveChanges();
+            return subject;
+        }
+
+        public Subject ChangeSubject(int id, Subject subject)
+        {
+            Subject updatedSubject = db.Subjects.Find(id);
+
+            if(subject.NameOfSubject != null) { updatedSubject.NameOfSubject = subject.NameOfSubject; }
+            if(subject.Teacher != null) { updatedSubject.Teacher = subject.Teacher; }
+            db.SaveChanges();
+
+            return updatedSubject;
+        }
+
+        public void RemoveSubject(int id)
+        {
+            db.Subjects.Remove(db.Subjects.First(r => r.ID == id));
+        }
     }
 }

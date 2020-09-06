@@ -21,11 +21,28 @@ namespace University.Controllers
             this.subjectService = subjectService;
         }
 
+        [HttpPost("new")]
+        public Subject AddNewSubjcet(Subject subject)
+        {
+            return subjectService.AddSubject(subject);
+        }
+
         [HttpGet]
         public List<Subject> GetSubjects()
         {
             return subjectService.GetSubjectsList();
         }
 
+        [HttpPatch("update/{id}")]
+        public Subject UpdateSubject(int id, [FromBody] Subject subject)
+        {
+            return subjectService.ChangeSubject(id, subject);
+        }
+
+        [HttpDelete("delete/{id}")]
+        public void DeleteSubject(int id)
+        {
+            subjectService.RemoveSubject(id);
+        }
     }
 }
