@@ -36,7 +36,11 @@ namespace University.Services
             db.SaveChanges();
 
             return updatedSubject;
+        }
 
+        public void RemoveSubject(int id)
+        {
+            db.Subjects.Remove(db.Subjects.First(r => r.ID == id));
         }
     }
 }

@@ -39,5 +39,10 @@ namespace University.Controllers
             return subjectService.ChangeSubject(id, subject);
         }
 
+        [HttpDelete("delete/{id}")]
+        public void DeleteSubject(int id)
+        {
+            subjectService.RemoveSubject(id);
+        }
     }
 }
