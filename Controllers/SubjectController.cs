@@ -33,5 +33,11 @@ namespace University.Controllers
             return subjectService.GetSubjectsList();
         }
 
+        [HttpPatch("update/{id}")]
+        public Subject UpdateSubject(int id, [FromBody] Subject subject)
+        {
+            return subjectService.ChangeSubject(id, subject);
+        }
+
     }
 }

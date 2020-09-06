@@ -26,5 +26,17 @@ namespace University.Services
             db.SaveChanges();
             return subject;
         }
+
+        public Subject ChangeSubject(int id, Subject subject)
+        {
+            Subject updatedSubject = db.Subjects.Find(id);
+
+            if(subject.NameOfSubject != null) { updatedSubject.NameOfSubject = subject.NameOfSubject; }
+            if(subject.Teacher != null) { updatedSubject.Teacher = subject.Teacher; }
+            db.SaveChanges();
+
+            return updatedSubject;
+
+        }
     }
 }
