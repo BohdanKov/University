@@ -20,5 +20,41 @@ namespace University.Services
         {
             return db.Students.ToList();
         }
+
+        public List<StudentRating> GetStudentsRatingBySubject(int idSubj)
+        {
+            List<Mark> listMarks = db.Marks.Where(m => m.SubjectID == idSubj).ToList();
+            return GetRating(listMarks);
+        }
+
+        public List<StudentRating> GetRating(List<Mark> listMarks)
+        {
+            List<StudentRating> studentsRating = new List<StudentRating>();
+
+            while (listMarks.Any())
+            {
+                var currentStudentId = listMarks[0].StudentID;
+                StudentRating stud = new StudentRating();
+                var student = db.Students.Find(currentStudentId);
+                stud.StudentFullName = student.FirstName + " " + student.LastName;
+
+                float sum = 0;
+                float count = 0;
+                for(int i=0; i < listMarks.Count; i++)
+                {
+                    if(listMarks[i].StudentID == currentStudentId)
+                    {
+                        sum += listMarks[i].Grade;
+                        count ++;
+                        listMarks.Remove(listMarks[i]);
+                        i--;
+                    }
+                }
+                stud.AveregeGrade = (float)System.Math.Round(sum / count, 2);    
+                studentsRating.Add(stud);   
+            }
+            studentsRating.Sort((x, y) => y.AveregeGrade.CompareTo(x.AveregeGrade));
+            return studentsRating;
+        }
     }
 }
