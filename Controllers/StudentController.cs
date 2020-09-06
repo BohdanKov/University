@@ -28,6 +28,7 @@ namespace University.Controllers
         {
             return studentService.AddStudent(student);
         }
+
         [HttpGet]
         public List<Student> GetStudents()
         {
@@ -44,6 +45,12 @@ namespace University.Controllers
         public List<StudentRating> GetGeneralRating()
         {
             return studentService.GetStudentsGeneralRating();
+        }
+
+        [HttpDelete("delete/{id}")]
+        public void DeleteStudent(int id)
+        {
+            studentService.RemoveStudent(id);
         }
 
 

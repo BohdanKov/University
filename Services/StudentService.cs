@@ -23,6 +23,12 @@ namespace University.Services
             return student;
         }
 
+        public void RemoveStudent(int id)
+        {
+            db.Students.Remove(db.Students.First(r => r.ID == id));
+            db.SaveChanges();
+        }
+
         public List<Student> GetStudentsList()
         {
             return db.Students.ToList();
